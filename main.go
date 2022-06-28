@@ -1,21 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"project-pertama/entity"
+	"project-pertama/service"
+	"time"
+)
 
 func main() {
-	// var name string = "John"
-	// var age int = 25
-	// fmt.Println("hello world")
-	// for i := 0; i < 10; i++ {
-	// 	if i%2 == 0 {
-	// 		fmt.Println("Genap")
-	// 	} else {
-	// 		fmt.Println("Ganjil")
-	// 	}
+	userService := service.NewUserService()
 
-	// }
-	nama := []string{"Budi", "Anies", "John", "Doe", "Lorem"}
-	for i := 0; i < len(nama); i++ {
-		fmt.Println(nama[i])
-	}
+	userService.Register(&entity.User{
+		Id:        1,
+		Username:  "Mekel",
+		Email:     "Mekel@kitabisa.com",
+		Password:  "321321",
+		Age:       30,
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+	})
+
 }
