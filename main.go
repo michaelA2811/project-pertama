@@ -1,22 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"project-pertama/entity"
 	"project-pertama/service"
-	"time"
 )
 
 func main() {
 	userService := service.NewUserService()
 
-	userService.Register(&entity.User{
-		Id:        1,
-		Username:  "Mekel",
-		Email:     "Mekel@kitabisa.com",
-		Password:  "321321",
-		Age:       30,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	})
+	if user, err := userService.Register(&entity.User{
+		Username: "Mekel",
+		Email:    "Mekel@kitabisa.com",
+		Password: "321321",
+		Age:      30,
+	}); err != nil {
+		fmt.Printf("Error when register user: %+v", err)
+		return
+	} else {
+		fmt.Printf("Success register user: %+v", user)
+	}
 
 }
